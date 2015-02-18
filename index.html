@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="menu.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.9.0/lodash.js"></script>
+
+  <!-- код меню -->
+  <script src="menu.js"></script>
+</head>
+<body>
+
+<script type="text/template" id="menu-template">
+/* ваш шаблон */
+</script>
+
+<script>
+var foodMenu = new Menu({ 
+  title: 'Продуктовое меню',
+  items: [
+    {link: 'cheese', html: 'Сыр'},
+    {link: 'sausage', html: 'Колбаса'},
+    {link: 'cake', html: 'Торт'}
+  ],
+  template: $('#menu-template').html()
+});
+
+foodMenu.getElement().appendTo('body');
+
+foodMenu.open();
+
+</script>
+
+</body>
+</html>
