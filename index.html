@@ -12,7 +12,18 @@
 <body>
 
 <script type="text/template" id="menu-template">
-/* ваш шаблон */
+  <div class="menu">
+    <span class="menu-title"><%=title%></span>
+    <ul class="menu-items">
+      <% $(items).each(function() { %>
+      <%=itemTemplate(this)%>
+      <% }); %> 
+    </ul>
+  </div>
+</script>
+
+<script type="text/template" id="menu-item-template">
+      <li><a href="#<%=link%>"><%=html%></a></li>
 </script>
 
 <script>
@@ -23,7 +34,8 @@ var foodMenu = new Menu({
     {link: 'sausage', html: 'Колбаса'},
     {link: 'cake', html: 'Торт'}
   ],
-  template: $('#menu-template').html()
+  template: $('#menu-template').html(),
+  itemTemplate: $('#menu-item-template').html()
 });
 
 foodMenu.getElement().appendTo('body');
@@ -32,5 +44,6 @@ foodMenu.open();
 
 </script>
 
+<button onclick="foodMenu.addItem({ link: 'berry', html: 'Ягоды' })">Добавить пункт меню "Ягоды"</button>
 </body>
 </html>
